@@ -11,8 +11,14 @@
         Title="MainWindow" Height="800" Width="800">
     <StackPanel
         x:Name="Basic">
-        <Border CornerRadius="10" BorderThickness="1">
-            <Label Content="{Binding content}" FontSize="30" FontWeight="ExtraLight"/>
-        </Border>
+        <StackPanel Orientation="Horizontal">
+            <Label Width="320" Content="{Binding restDdayString}" FontSize="30" FontWeight="ExtraLight"/>
+            <Label Content="초" FontSize="30" FontWeight="ExtraLight"/>
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal">
+            <Label Width="180" Content="{Binding per}" FontSize="30" FontWeight="ExtraLight"/>
+            <Label Content="%" FontSize="30" FontWeight="ExtraLight"/>
+        </StackPanel>
     </StackPanel>
 </Window>

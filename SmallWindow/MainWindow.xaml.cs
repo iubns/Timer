@@ -16,8 +16,8 @@ namespace SmallWindow
             InitializeComponent();
             DataContext = this;
             Basic.MouseLeftButtonDown += (object o, MouseButtonEventArgs e) => DragMove();
-            this.Top = 500;
-            Left = 500;
+            this.Top = 250;
+            Left = 450;
             loop();
         }
 
@@ -30,19 +30,31 @@ namespace SmallWindow
                 TimeSpan rastDays = theDay - DateTime.Now;
                 TimeSpan pastDays = DateTime.Now - startDay;
 
-                content = $"{rastDays.Days}일 {rastDays.Hours}시 {rastDays.Minutes}분 {rastDays.Seconds}:{rastDays.Milliseconds}초";
-                content += $"\n{(pastDays.Ticks * 100 / (double)(theDay.Ticks - startDay.Ticks )).ToString("0.#, #.000000")}%";
+                restDdayString = $"{rastDays.Days}일 {rastDays.Hours}시 {rastDays.Minutes}분 {rastDays.Seconds}:{rastDays.Milliseconds.ToString("0.###")}";
+                per = $"{(pastDays.Ticks * 100 / (double)(theDay.Ticks - startDay.Ticks )).ToString("0.########")}";
                 await Task.Delay(10);
             }
         }
 
-        private string _content { get; set; } = string.Empty;
-        public string content {
-            get => _content;
+        private string _restDdayString { get; set; } = string.Empty;
+        public string restDdayString
+        {
+            get => _restDdayString;
             set
             {
-                _content = value;
-                OnPropertyChanged("Content");
+                _restDdayString = value;
+                OnPropertyChanged("restDdayString");
+            }
+        }
+
+        private string _per { get; set; } = string.Empty;
+        public string per
+        {
+            get => _per;
+            set
+            {
+                _per = value;
+                OnPropertyChanged("per");
             }
         }
 
